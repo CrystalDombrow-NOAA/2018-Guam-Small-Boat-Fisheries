@@ -102,16 +102,24 @@ trip.costs.function <- function(guam.data.cleaned, gear.type.trip, breakdown){
            max.main.rep = round(max(main.rep, na.rm = T), 2),
            min.other = round(min(other, na.rm = T), 2),
            max.other = round(max(other, na.rm = T), 2)) %>%
-    mutate(avg.trip = unique(avg.boat.fuel + avg.truck.fuel + avg.ice +
-                             avg.food.bev + avg.bait + avg.main.rep + avg.other)) %>%
+    mutate(avg.trip = sum(unique(avg.boat.fuel), unique(avg.truck.fuel),
+                          unique(avg.ice), unique(avg.food.bev), 
+                          unique(avg.bait), unique(avg.main.rep + avg.other), 
+                          na.rm = T)) %>%
     mutate(std.err.trip = std.error(boat.fuel + truck.fuel + ice + bait + 
                                       food.bev + main.rep + other)) %>%
-    mutate(med.trip = unique(med.boat.fuel + med.truck.fuel + med.ice +
-                               med.food.bev + med.bait + med.main.rep + med.other)) %>% 
-    mutate(min.trip = unique(min.boat.fuel + min.truck.fuel + min.ice +
-                              min.food.bev + min.bait + min.main.rep + min.other)) %>%
-    mutate(max.trip = unique(max.boat.fuel + max.truck.fuel + max.ice +
-                              max.food.bev + max.bait + max.main.rep + max.other)) %>%
+    mutate(med.trip = sum(unique(med.boat.fuel), unique(med.truck.fuel),
+                            unique(med.ice), unique(med.food.bev), 
+                            unique(med.bait), unique(med.main.rep + med.other), 
+                            na.rm = T)) %>% 
+    mutate(min.trip = sum(unique(min.boat.fuel), unique(min.truck.fuel),
+                          unique(min.ice), unique(min.food.bev), 
+                          unique(min.bait), unique(min.main.rep + min.other), 
+                          na.rm = T)) %>% 
+    mutate(max.trip = sum(unique(max.boat.fuel), unique(max.truck.fuel),
+                          unique(max.ice), unique(max.food.bev), 
+                          unique(max.bait), unique(max.main.rep + max.other), 
+                          na.rm = T)) %>% 
     mutate(bt.fuel.per = round(unique(avg.boat.fuel / avg.trip * 100), 1),
            truck.fuel.per = round(unique(avg.truck.fuel / avg.trip * 100), 1),
            ice.per = round(unique(avg.ice / avg.trip * 100), 1),
@@ -123,6 +131,8 @@ trip.costs.function <- function(guam.data.cleaned, gear.type.trip, breakdown){
   # 
   # #----------------------------------------------
   # #PRIMARY CALCULATIONS
+  #  NOTE Change totals in primary and secondary calculations to match
+  # combined totals' code before running; code changed
   # 
   # trip.costs.primary <- guam.cleaned.trip.costs %>%
   #   select(any_of(c("Q34A.combined", "Q36A", "Q36C", "Q36E", "Q36F", "Q36G", 
@@ -193,6 +203,8 @@ trip.costs.function <- function(guam.data.cleaned, gear.type.trip, breakdown){
   # 
   # #----------------------------------------------
   # #SECONDARY CALCULATIONS
+  #  NOTE Change totals in primary and secondary calculations to match
+  # combined totals' code before running; code changed
   # 
   # trip.costs.secondary <- guam.cleaned.trip.costs %>%
   #   select(any_of(c("Q37A.combined", "Q39A", "Q39C", "Q39E", "Q39F", "Q39G", 

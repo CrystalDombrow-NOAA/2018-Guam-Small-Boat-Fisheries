@@ -106,17 +106,19 @@ annual.expenditures.function <- function(guam.data.cleaned, breakdown){
     # min.safety = round(min(safety, na.rm = T), 2),
     # max.safety = round(max(safety, na.rm = T), 2)) %>%
     #TOTAL ANNUAL EXPENDITURES
-    mutate(mean.tot = sum(unique(mean.boat.ins + mean.loan.pmt + mean.fin.serv + 
-                                 mean.mooring + mean.vessel.repair + mean.oil.lube +
-                                 mean.gear + mean.electronics + mean.fees +
-                                 mean.safety), na.rm = T)) %>%
+    mutate(mean.tot = sum(unique(mean.boat.ins), unique(mean.loan.pmt),
+                          unique(mean.fin.serv), unique(mean.mooring),
+                          unique(mean.vessel.repair), unique(mean.oil.lube),
+                          unique(mean.gear), unique(mean.electronics),
+                          unique(mean.fees), unique(mean.safety), na.rm = T)) %>%
     mutate(std.e.tot = std.error(c(boat.ins, loan.pmt, fin.services, mooring,
                                    vessel.repair, oil.lube, gear, electronics,
                                    fees, safety), na.rm = T)) %>%
-    mutate(med.tot = sum(unique(med.boat.ins + med.loan.pmt + med.fin.serv + 
-                                med.mooring + med.vessel.repair + med.oil.lube +
-                                med.gear + med.electronics + med.fees +
-                                med.safety), na.rm = T)) 
+    mutate(med.tot = sum(unique(med.boat.ins), unique(med.loan.pmt),
+                         unique(med.fin.serv), unique(med.mooring),
+                         unique(med.vessel.repair), unique(med.oil.lube),
+                         unique(med.gear), unique(med.electronics),
+                         unique(med.fees), unique(med.safety), na.rm = T))
   # mutate(min.tot = sum(unique(min.boat.ins + min.loan.pmt + min.fin.serv + 
   #                             min.mooring + min.vessel.repair + min.oil.lube +
   #                             min.gear + min.electronics + min.fees +
@@ -194,17 +196,19 @@ annual.expenditures.function <- function(guam.data.cleaned, breakdown){
     # min.safety = round(min(safety, na.rm = T), 2),
     # max.safety = round(max(safety, na.rm = T), 2)) %>%
     #TOTAL ANNUAL EXPENDITURES
-    mutate(mean.tot = sum(unique(mean.boat.ins + mean.loan.pmt + mean.fin.serv + 
-                                 mean.mooring + mean.vessel.repair + mean.oil.lube +
-                                 mean.gear + mean.electronics + mean.fees +
-                                 mean.safety))) %>%
-    mutate(std.e.tot = std.error(boat.ins + loan.pmt + fin.services + mooring +
-                                 vessel.repair + oil.lube + gear + electronics +
-                                 fees + safety)) %>%
-    mutate(med.tot = sum(unique(med.boat.ins + med.loan.pmt + med.fin.serv + 
-                                med.mooring + med.vessel.repair + med.oil.lube +
-                                med.gear + med.electronics + med.fees +
-                                med.safety)))
+    mutate(mean.tot = sum(unique(mean.boat.ins), unique(mean.loan.pmt),
+                          unique(mean.fin.serv), unique(mean.mooring),
+                          unique(mean.vessel.repair), unique(mean.oil.lube),
+                          unique(mean.gear), unique(mean.electronics),
+                          unique(mean.fees), unique(mean.safety), na.rm = T)) %>%
+    mutate(std.e.tot = std.error(c(boat.ins, loan.pmt, fin.services, mooring,
+                                   vessel.repair, oil.lube, gear, electronics,
+                                   fees, safety), na.rm = T)) %>%
+    mutate(med.tot = sum(unique(med.boat.ins), unique(med.loan.pmt),
+                         unique(med.fin.serv), unique(med.mooring),
+                         unique(med.vessel.repair), unique(med.oil.lube),
+                         unique(med.gear), unique(med.electronics),
+                         unique(med.fees), unique(med.safety), na.rm = T))
   # mutate(min.tot = sum(unique(min.boat.ins + min.loan.pmt + min.fin.serv + 
   #                             min.mooring + min.vessel.repair + min.oil.lube +
   #                             min.gear + min.electronics + min.fees +

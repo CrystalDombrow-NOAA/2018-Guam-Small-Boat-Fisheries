@@ -1,5 +1,5 @@
 ##############
-# Title: 2018 Guam small boat fishery cost-earnings survey
+# Title: 2018 CNMI small boat fishery cost-earnings survey
 # Author: Crystal Dombrow
 # Date: February-April 2024
 ##############
@@ -8,7 +8,7 @@
 # DESCRIPTION
 #----------------------------
   # The purpose of this program is to clean the data, analyze the data, & 
-  # generate the results for the 2018 Guam small boat survey report.
+  # generate the results for the 2018 CNMI small boat survey report.
   # This readme script runs the entire program (code below).
 
 # Note: Author manually checked each code chunk to ensure calculations are 
@@ -35,7 +35,7 @@
          # data as input for this R program. Data cleaning steps are described in: 
          # GuamCNMI_DataCleaningDocumentation.docx & 
          # Documentation for 2017 GuamCNMI Calculation.docx
-       # GuamCNMI_SBF_20182019_DataCleaned.csv: cleaned survey data, output from  
+       # CNMI_SBF_2018_DataCleaned.csv: cleaned survey data, output from  
          # this R program.
    
    #3. "Functions" folder
@@ -57,7 +57,7 @@
 rm(list = ls())
 
 #Run data cleaning script
-source("Data/GuamCNMI_SBF_DataCleaning.R")
+source("Data/CNMI_SBF_DataCleaning.R")
 
 
 #Run analyses, by section 
